@@ -18,6 +18,8 @@ const parseUnicodeSet = (
   const orders = Object.keys(baseFont.unicodeRange)
     .sort((a, b) => getIndex(a) - getIndex(b));
 
+  const rangesInGoogleFont: string[] = [];
+
   const unicodeRanges = orders.reduce<string[][]>((arr, key) => {
     let targets = baseFont.unicodeRange[key]
       .replace(/\U\+/g, '')
@@ -54,6 +56,7 @@ const parseUnicodeSet = (
       return arr;
     }
 
+    rangesInGoogleFont.push(baseFont.unicodeRange[key]);
     return [...arr, targets];
   }, []);
 
@@ -65,6 +68,7 @@ const parseUnicodeSet = (
 
   return {
     baseFont,
+    rangesInGoogleFont,
     charset: charsetByRanges,
     unicodeRange: unicodeRanges,
   };

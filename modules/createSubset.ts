@@ -7,7 +7,7 @@ import * as types from '../types';
 
 
 type CreateSubSetParameter = {
-  index: number;
+  index: number | string;
   font: types.Font;
   paths: {
     charset: string;

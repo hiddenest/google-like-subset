@@ -5,7 +5,6 @@ import {
   parseUnicodeSet,
   createSubset,
   parseGlyph,
-  createSubsetTextFile,
 } from './modules';
 
 import * as config from './config';
@@ -13,7 +12,11 @@ import * as config from './config';
 
 const main = () => {
   const { unicodes } = parseGlyph(config.Paths.base);
-  const { baseFont, charset, unicodeRange } = parseUnicodeSet(
+  const {
+    charset,
+    unicodeRange,
+    rangesInGoogleFont,
+  } = parseUnicodeSet(
     config.BaseGoogleFont,
     unicodes,
   );
@@ -25,7 +28,7 @@ const main = () => {
     cssTemplates[index] = createCSSImportTemplate(
       config.FontData,
       index,
-      baseFont.unicodeRange[`[${index}]`],
+      rangesInGoogleFont[index],
     );
 
     await createSubset({

@@ -9,10 +9,10 @@ export const formatAsUnicode = (value: string) => (
   parseInt(value, 16).toString(16).padStart(4, '0')
 );
 
-const getSubsetFileName = (i: number, fileName: string) => (
-  `${fileName}.subset.${i}`
+const getSubsetFileName = (name: number | string, fileName: string) => (
+  `${fileName}.subset.${name}`
 );
 
-export const getSubsetFileUrl = (font: types.Font, i: number) => (
-  `./subset/${getSubsetFileName(i, font.fileName)}.${font.type}`
+export const getSubsetFileUrl = (font: types.Font, name: number | string) => (
+  `./subset/${getSubsetFileName(name, font.fileName)}.${font.type}`
 )

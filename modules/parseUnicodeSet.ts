@@ -1,6 +1,7 @@
 import { APIv2 as fonts } from 'google-font-metadata';
 
 import { formatAsUnicode, getIndex } from '../utils';
+import createSubsetTextFile from './createSubsetTextFile';
 
 
 const parseUnicodeSet = (
@@ -17,7 +18,7 @@ const parseUnicodeSet = (
   const orders = Object.keys(baseFont.unicodeRange)
     .sort((a, b) => getIndex(a) - getIndex(b));
 
-  const unicodeRanges = orders.map((key) => {
+  const unicodeRanges = orders.reduce<string[][]>((arr, key) => {
     let targets = baseFont.unicodeRange[key]
       .replace(/\U\+/g, '')
       .split(', ');
@@ -49,12 +50,18 @@ const parseUnicodeSet = (
       return arr.concat(stringRange);
     }, []);
 
-    return targets;
-  });
+    if (!targets.length) {
+      return arr;
+    }
+
+    return [...arr, targets];
+  }, []);
 
   const charsetByRanges = unicodeRanges.map(rows => (
     rows.map(item => String.fromCodePoint(parseInt(item, 16))).join('')
   ));
+
+  createSubsetTextFile(charsetByRanges);
 
   return {
     baseFont,

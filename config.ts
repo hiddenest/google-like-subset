@@ -1,6 +1,9 @@
+import * as types from './types';
+
+
 export const BaseGoogleFont = 'noto-sans-kr';
 
-export const FontData: Font = {
+export const FontData: types.Font = {
   type: 'woff',
   family: 'Pretendard',
   fileName: 'Pretendard-Black',

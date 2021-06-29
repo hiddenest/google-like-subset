@@ -1,7 +1,8 @@
-import { getSubsetFileUrl } from "../utils";
+import { getSubsetFileUrl } from '../utils';
+import * as types from '../types';
 
 const createCSSImportTemplate = (
-  font: Font,
+  font: types.Font,
   i: number,
   unicodeRange: string,
 ) => {

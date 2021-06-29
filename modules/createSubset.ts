@@ -1,11 +1,14 @@
+import fs from 'fs';
+
 import shell from './shell';
 
 import { getSubsetFileUrl } from '../utils';
+import * as types from '../types';
 
 
 type CreateSubSetParameter = {
   index: number;
-  font: Font;
+  font: types.Font;
   paths: {
     charset: string;
     base: string;

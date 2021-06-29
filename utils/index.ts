@@ -1,3 +1,5 @@
+import * as types from '../types';
+
 export const getIndex = (index: string) => {
   const pureNumeric = index.replace(/[\[\]]/g, '');
   return parseFloat(pureNumeric);
@@ -11,6 +13,6 @@ const getSubsetFileName = (i: number, fileName: string) => (
   `${fileName}.subset.${i}`
 );
 
-export const getSubsetFileUrl = (font: Font, i: number) => (
-  `./subset/${font.type}/${getSubsetFileName(i, font.fileName)}.${font.type}`
+export const getSubsetFileUrl = (font: types.Font, i: number) => (
+  `./subset/${getSubsetFileName(i, font.fileName)}.${font.type}`
 )

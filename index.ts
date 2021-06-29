@@ -5,6 +5,7 @@ import {
   parseUnicodeSet,
   createSubset,
   parseGlyph,
+  createSubsetTextFile,
 } from './modules';
 
 import * as config from './config';
@@ -20,7 +21,7 @@ const main = () => {
   // create CSS File for import webfont
   const cssTemplates: string[] = [];
 
-  charset.forEach(async (_, index) => {
+  charset.forEach(async (str, index) => {
     cssTemplates[index] = createCSSImportTemplate(
       config.FontData,
       index,

@@ -8,3 +8,5 @@ yarn-error.log
 subset/
 charset/
 base/
+
+parsed-glyph.json

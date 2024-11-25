@@ -21,7 +21,7 @@ It could be useful for other korean fonts, so made this.
 
 ## Before install
 
-`google-like-subset` requires `chromium` to use. If you are on `arm64` architecture, please install chromium invidiually before run `./install.sh`
+google-like-subset requires Chromium to run. If you're using an arm64 architecture, please install Chromium manually before running `./install.sh`.
 
 ```bash
 $ sudo apt install chromium  # ubuntu
@@ -42,5 +42,5 @@ after store your font file at `base` folder, open `config.ts`.
 - `FontData` - the data of font that you're making as a subset.
 - `Paths` - folders... only change `base` with your stored file name.
 
-Run `yarn install --frozen-lockfile` ...
+Run `./install.sh` ...
 and just run `yarn start`.
